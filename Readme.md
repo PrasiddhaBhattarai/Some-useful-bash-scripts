@@ -58,6 +58,20 @@ cat ${REPORT_FILE}
 
  ```
 
+#### Instead of redirecting each command
+```bash
+# Save original stdout
+exec 3>&1
+
+# Redirect stdout to report
+exec > "$REPORT_FILE"
+
+# ... rest of script ...
+
+# Show report on terminal
+cat "$REPORT_FILE" >&3
+```
+
  ### Execution Screenshot
  <img src="./execution_images/01_System_monitoring_script.png" alt="Image 1" width="700">
 
